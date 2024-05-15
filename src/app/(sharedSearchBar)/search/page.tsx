@@ -16,7 +16,7 @@ export default function Page({ searchParams, params }: Props) {
 
     const title = searchParams.title
 
-    const entries = getEntriesByTitle(title)
+    const entries = getEntriesByTitle(title) as BlogEntries
 
 
     return (
