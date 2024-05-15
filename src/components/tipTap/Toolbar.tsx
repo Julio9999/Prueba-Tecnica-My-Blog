@@ -63,7 +63,7 @@ export const Toolbar = ({ editor }: Props) => {
                         editor.chain().focus().toggleUnderline().run()
                     }}
                     className={
-                        editor.isActive("italic")
+                        editor.isActive("underline")
                             ? "bg-sky-700 text-white p-2 rounded-lg"
                             : "text-sky-400"
                     }
@@ -88,11 +88,11 @@ export const Toolbar = ({ editor }: Props) => {
                 <button
                     onClick={(e) => {
                         e.preventDefault()
-                        editor.chain().focus().toggleHeading({level: 2}).run()
+                        editor.chain().focus().toggleHeading({level: 1}).run()
                     }}
                     className={
-                        editor.isActive("heading", {level: 2})
-                            ? "bg-sky-700 text-white p-2 rounded-lg"
+                        editor.isActive("heading", {level: 1})
+                            ? "bg-sky-700 text-white p-2 rounded-lg text-xl"
                             : "text-sky-400"
                     }
                 >

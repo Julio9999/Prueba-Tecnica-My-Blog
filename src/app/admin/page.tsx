@@ -3,7 +3,8 @@ import React from 'react'
 
 const Page = () => {
     return (
-        <div className='mt-10 px-4'>
+        <div className='mt-10 px-4 flex flex-col'>
+          
             <BlogForm />
         </div>
     )

@@ -3,7 +3,6 @@
 import { useEditor, EditorContent } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import { Toolbar } from './Toolbar';
-import { Heading  } from "@tiptap/extension-heading"
 import Underline from '@tiptap/extension-underline';
 
 interface Props {
@@ -11,7 +10,9 @@ interface Props {
   onChange: (richText: string) => void;
 }
 
-const Tiptap = ({content, onChange}: Props) => {
+export const Tiptap = ({ content, onChange }: Props) => {
+
+
   const editor = useEditor({
     extensions: [
       StarterKit,
@@ -23,17 +24,22 @@ const Tiptap = ({content, onChange}: Props) => {
       }
     },
     content,
-    onUpdate({editor}){
-        onChange(editor.getHTML())
+    onUpdate({ editor }) {
+      onChange(editor.getHTML())
     }
   })
 
   return (
-    <div className='flex flex-col justify-stretch min-h-[250px] text-white  h-full'>
-        <Toolbar editor={editor} />
-        <EditorContent style={{whiteSpace: "pre-line"}} editor={editor} />
+    <div
+      className='flex flex-col justify-stretch min-h-[250px] text-white  h-full'>
+      <Toolbar editor={editor} />
+      <EditorContent style={{ whiteSpace: "pre-line" }} editor={editor} />
+      <div className="w-full col-span-full">
+        <button
+          onClick={() => editor?.commands.clearContent()}
+          type="submit"
+          className="text-white my-4 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 col-span-2">Enviar</button>
+      </div>
     </div>
   )
 }
-
-export default Tiptap

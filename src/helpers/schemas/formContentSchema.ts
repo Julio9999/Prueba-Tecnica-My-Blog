@@ -1,8 +1,8 @@
 import * as yup from "yup";
-import { FormContentSchema } from "../interfaces/schemas/formContentSchema";
+import { IFormSchema } from "..";
 
-export const formContentSchema: yup.ObjectSchema<FormContentSchema> = yup.object({
-    slug: yup.string().required("Este campo es requerido").default(''),
+
+export const formSchema: yup.ObjectSchema<IFormSchema> = yup.object({
     title: yup.string().required("Este campo es requerido").default(''),
     content: yup.string().required("Este campo es requerido").default('')
 })
