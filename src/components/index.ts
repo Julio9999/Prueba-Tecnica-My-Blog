@@ -1,7 +1,11 @@
+
+export { EntryDetails } from "./BlogEntries/EntryDetails";
+
 export { SearchComponent } from "./Search/SearchComponent";
 
 export { BlogEntriesSkeleton } from "./Skeletons/BlogEntriesSkeleton";
 export { BlogEntrySkeleton } from "./Skeletons/BlogEntrySkeleton";
+export { EntryDetailsSkeleton } from "./Skeletons/EntryDetailsSkeleton";
 
 
 export { Navbar } from "./NavBar/Navbar";
