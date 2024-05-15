@@ -1,7 +1,5 @@
 import { EntryDetails } from "@/components"
-import { getEntryBySlug } from "@/services"
-import DOMPurify from "isomorphic-dompurify"
-import Link from "next/link"
+import { revalidatePath } from "next/cache"
 
 interface Props {
     params: {
@@ -11,15 +9,14 @@ interface Props {
 
 
 const Page = async ({ params }: Props) => {
+    revalidatePath('/', 'layout')
 
-    const slug = params.slug
 
-    const entry = await getEntryBySlug(slug)
 
     return (
         <div className="mt-16 flex flex-col md:px-10 px-4">
             
-            <EntryDetails slug={slug} />
+            <EntryDetails  />
         </div>
     )
 }

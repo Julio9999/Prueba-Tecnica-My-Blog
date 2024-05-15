@@ -2,23 +2,25 @@
 import { useEffect, useState } from "react"
 import DOMPurify from "isomorphic-dompurify"
 import { EntryDetailsSkeleton } from ".."
+import { usePathname } from "next/navigation"
 
-interface Props {
-    slug: string
-}
 
-export const EntryDetails = ({ slug }: Props) => {
+export const EntryDetails = () => {
 
     const [entry, setEntry] = useState({} as BlogEntry)
     const [loading, setLoading] = useState(true);
+    const pathName = usePathname();
+    const slug = pathName.split('/')[2] 
+    
 
     useEffect(() => {
-        fetch(`/api/getEntryBySlug/${slug}`).then(async (response) => {
-            const json = await response.json()
-            const entry = json.entry as BlogEntry
-            setEntry(entry)
-            setLoading(false)
-        })
+         fetch(`/api/getEntryBySlug/${slug}`).then(async (response) => {
+             console.log(response)
+             const json = await response.json()
+             const entry = json.entry as BlogEntry
+             setEntry(entry)
+             setLoading(false)
+         })
     }, [])
 
     return (
