@@ -1,1 +1,3 @@
-export { getJsonData } from "./getJsonData";
+export { getEntryBySlug } from "./getEntryBySlug";
+
+export { getEntriesByTitle } from "./getEntriesByTitle";

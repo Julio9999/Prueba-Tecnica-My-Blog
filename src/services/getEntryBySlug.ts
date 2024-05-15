@@ -1,7 +1,8 @@
-import { getJsonData } from "./getJsonData"
+import jsonData from "../../public/data/data.json"
+
 
 export const getEntryBySlug = async(slug: string) => {
-    const entries = await  getJsonData()
-    const filteredEntry = entries?.items.find(entry => entry.slug === slug)!
+    const entries = jsonData
+    const filteredEntry = entries?.items.find(entry => entry.slug === slug)! as BlogEntry
     return filteredEntry;
 }

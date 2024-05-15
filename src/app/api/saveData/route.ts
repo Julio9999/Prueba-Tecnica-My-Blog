@@ -1,13 +1,14 @@
-'use server';
 import fs from 'fs';
 import path from 'path';
 import { v4 as uuidv4 } from 'uuid';
 import { format } from 'date-fns';
-import { dateFormat } from '@/helpers/constans/dateFormat';
+import { dateFormat, hourFormat } from '@/helpers/constans/dateFormat';
+import { revalidatePath } from 'next/cache';
+
 
 
 export async function POST(req: Request) {
-    const directory = path.join(process.cwd(), 'data');
+    const directory = path.join(process.cwd(), 'public/data');
     const json = await req.json();
 
 
@@ -33,19 +34,25 @@ export async function POST(req: Request) {
     }
 
     const currentDate = new Date();
+    const formatedDate = format(currentDate, dateFormat)
+    const formattedTime = format(currentDate, hourFormat);
 
     const entryData: BlogEntry = json && {
         slug: json.title.toLocaleLowerCase().replace(/ /g, '-'),
         title: json.title,
         content: json.content,
         id: uuidv4(),
-        date: format(currentDate, dateFormat)
+        date: formatedDate,
+        hour: formattedTime
     }
 
 
     jsonData.unshift((entryData))
 
     fs.writeFileSync(filePath, JSON.stringify({ items: jsonData }));
+
+    revalidatePath('/', 'layout')     
+
     return new Response("Guardado correctamente", {
         status: 200
     })

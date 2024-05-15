@@ -1,4 +1,4 @@
-import { getEntryBySlug } from "@/services/getEntryBySlug"
+import { getEntryBySlug } from "@/services"
 import DOMPurify from "isomorphic-dompurify"
 import Link from "next/link"
 
@@ -16,7 +16,7 @@ const Page = async ({ params }: Props) => {
     const entry = await getEntryBySlug(slug)
 
     return (
-        <div className="mt-16 flex flex-col">
+        <div className="mt-16 flex flex-col md:px-10 px-4">
             
             <div className="xl:container mx:auto mb-12  w-full flex items-center justify-center ">
                 <div className="flex flex-col items-center  border-gray-200 rounded-lg shadow    w-full justify-center">
@@ -27,7 +27,10 @@ const Page = async ({ params }: Props) => {
                                 __html: DOMPurify.sanitize(entry.content)
                             }}
                         />
-                        <p className="text-end w-full">Fecha de publicación: {entry.date}</p>
+                        <div className=" flex flex-col items-center justify-end w-full">
+                        <p className="text-end w-full">Publicado el: {entry.date}</p>
+                        <p className="text-end w-full">a las: {entry?.hour} horas</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -37,14 +40,3 @@ const Page = async ({ params }: Props) => {
 
 export default Page;
 
-{/* 
-<div className="flex flex-col items-center justify-center xl:container mt-20">
-            <p>{entry?.title}</p>
-            <div 
-            dangerouslySetInnerHTML={{
-                __html: DOMPurify.sanitize(entry?.content)
-            }}
-             />
-            <p>{entry?.date}</p>
-        </div>
-*/}

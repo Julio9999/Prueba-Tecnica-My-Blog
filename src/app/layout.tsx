@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-slate-950 text-white `}>
+      <body className={`${inter.className} xl:container mx-auto bg-slate-950 text-white `}>
         <ToastContainer />
         <Navbar />
         <div className="md:px-10">
