@@ -1,6 +1,7 @@
 'use client';
 import { BlogEntriesSkeleton, BlogEntry } from ".."
 import { useEffect, useState } from "react";
+import { BlogEntriesGrid } from "./BlogEntriesGrid";
 
 
 interface Props {
@@ -36,9 +37,7 @@ export const BlogEntries = ({ defaultValues }: Props) => {
                             <BlogEntriesSkeleton />
                         </> :
                         <>
-                            {jsonData?.items?.map(item => (
-                                <BlogEntry key={item.slug} {...item} />
-                            ))}
+                            <BlogEntriesGrid entries={jsonData.items} />
                         </>
                 }
             </div>
