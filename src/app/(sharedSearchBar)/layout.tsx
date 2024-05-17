@@ -1,4 +1,5 @@
-import { SearchComponent } from "@/components";
+import { SearchComponent, SortComponent } from "@/components";
+import { MoveDown } from "lucide-react";
 
 export default function SearchBarLayout({
     children,
@@ -7,8 +8,13 @@ export default function SearchBarLayout({
 }>) {
     return (
         <div>
-            <div className="w-full px-4 md:px-10 text-left mb-8" >
+            <div className="w-full flex px-4 gap-5 md:items-center md:px-10 text-left mb-8" >
+                <div className="w-full">
                 <SearchComponent />
+                </div>
+                <div className="w-full flex ">
+                    <SortComponent />
+                </div>
             </div>
             {children}
         </div>

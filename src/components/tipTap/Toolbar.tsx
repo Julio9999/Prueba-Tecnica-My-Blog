@@ -4,14 +4,9 @@ import {
     Bold,
     Strikethrough,
     Italic,
-    List,
-    ListOrdered,
-    Heading2,
     Underline,
-    Quote,
     Undo,
     Redo,
-    Code
 } from "lucide-react"
 
 interface Props {
@@ -83,76 +78,6 @@ export const Toolbar = ({ editor }: Props) => {
                     }
                 >
                     <Strikethrough className="w-5 h-5" />
-                </button>
-
-                <button
-                    onClick={(e) => {
-                        e.preventDefault()
-                        editor.chain().focus().toggleHeading({level: 1}).run()
-                    }}
-                    className={
-                        editor.isActive("heading", {level: 1})
-                            ? "bg-sky-700 text-white p-2 rounded-lg text-xl"
-                            : "text-sky-400"
-                    }
-                >
-                    <Heading2 className="w-5 h-5" />
-                </button>
-
-                <button
-                    onClick={(e) => {
-                        e.preventDefault()
-                        editor.chain().focus().toggleBulletList().run()
-                    }}
-                    className={
-                        editor.isActive("bulletList")
-                            ? "bg-sky-700 text-white p-2 rounded-lg"
-                            : "text-sky-400"
-                    }
-                >
-                    <List className="w-5 h-5" />
-                </button>
-
-                <button
-                    onClick={(e) => {
-                        e.preventDefault()
-                        editor.chain().focus().toggleOrderedList().run()
-                    }}
-                    className={
-                        editor.isActive("orderedList")
-                            ? "bg-sky-700 text-white p-2 rounded-lg"
-                            : "text-sky-400"
-                    }
-                >
-                    <ListOrdered className="w-5 h-5" />
-                </button>
-
-                <button
-                    onClick={(e) => {
-                        e.preventDefault()
-                        editor.chain().focus().toggleBlockquote().run()
-                    }}
-                    className={
-                        editor.isActive("blockquote")
-                            ? "bg-sky-700 text-white p-2 rounded-lg"
-                            : "text-sky-400"
-                    }
-                >
-                    <Quote className="w-5 h-5" />
-                </button>
-
-                <button
-                    onClick={(e) => {
-                        e.preventDefault()
-                        editor.chain().focus().setCode().run()
-                    }}
-                    className={
-                        editor.isActive("code")
-                            ? "bg-sky-700 text-white p-2 rounded-lg"
-                            : "text-sky-400"
-                    }
-                >
-                    <Code className="w-5 h-5" />
                 </button>
 
                 <button

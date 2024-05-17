@@ -11,7 +11,7 @@ export const BlogEntriesGrid = ({ entries }: Props) => {
 
     const pathName = usePathname();
 
-    if(entries.length){
+    if(entries?.length){
         return (
             <>
                 {entries.map((item) => (
@@ -19,7 +19,7 @@ export const BlogEntriesGrid = ({ entries }: Props) => {
                 ))}
             </>
         )
-    } else if(!entries.length && pathName.includes('search')){
+    } else if(!entries?.length && pathName.includes('search')){
         return (<div className="col-span-full text-center py-4 text-3xl font-semibold">La búsqueda no arrojo ningún resultado.</div>)
     }else {
         return (<div className="col-span-full text-center py-4 text-3xl font-semibold">Blog sin entradas.</div>)

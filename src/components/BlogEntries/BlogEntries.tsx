@@ -1,7 +1,7 @@
 'use client';
-import { BlogEntriesSkeleton, BlogEntry } from ".."
-import { useEffect, useState } from "react";
+import { BlogEntriesSkeleton } from ".."
 import { BlogEntriesGrid } from "./BlogEntriesGrid";
+import { useBlogEntries } from "@/hooks/useBlogEntries";
 
 
 interface Props {
@@ -11,22 +11,11 @@ interface Props {
 export const BlogEntries = ({ defaultValues }: Props) => {
 
 
-    const [jsonData, setJsonData] = useState<BlogEntries>(defaultValues ?? {} as BlogEntries)
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        if (defaultValues) {
-            setLoading(false)
-        } else {
-            fetch('/data/data.json').then(async (response) => {
-                const json = await response.json() as BlogEntries
-                setJsonData(json)
-                setLoading(false)
-            })
-        }
-
-
-    }, [])
+    const {
+        loading,
+        jsonData
+    } = useBlogEntries({defaultValues})
+    
 
     return (
         <div className="flex items-center flex-col justify-center gap-3 mb-8   w-full md:px-4 px-10 ">

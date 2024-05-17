@@ -2,6 +2,9 @@
 export { EntryDetails } from "./BlogEntries/EntryDetails";
 
 export { SearchComponent } from "./Search/SearchComponent";
+export { SortComponent } from "./SortComponent/SortComponent";
+
+
 
 export { BlogEntriesSkeleton } from "./Skeletons/BlogEntriesSkeleton";
 export { BlogEntrySkeleton } from "./Skeletons/BlogEntrySkeleton";
